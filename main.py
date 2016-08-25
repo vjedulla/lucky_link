@@ -21,8 +21,8 @@ for i in range(0, lucky_digit):
         out.write(my_str)
         t += 1
 
-    rand = randint(0, len(tags) - 1)
-    # rand = 0
+    rand = randint(0, len(tags) - 1) # chose a random video ( fun results )
+    # rand = 0 # for next autoplay video
 
     url = tags[rand]['href']    # get the value of the next link
     curr = tags[rand]['title']  # get the title of that link
