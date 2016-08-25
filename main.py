@@ -3,10 +3,11 @@ from bs4 import BeautifulSoup
 from random import randint
 
 youtube = 'https://www.youtube.com'
-url = '/watch?v=WxXgzwhHCuU'
-lucky_digit = 10
+url = '/watch?v=xVPvzX-AeSM'
+lucky_digit = 55
 
 out = open('test.txt', 'w')
+
 for i in range(0, lucky_digit):
     response = urlopen(youtube + url)
 
@@ -21,13 +22,19 @@ for i in range(0, lucky_digit):
         t += 1
 
     rand = randint(0, len(tags) - 1)
+    # rand = 0
 
     url = tags[rand]['href']    # get the value of the next link
     curr = tags[rand]['title']  # get the title of that link
+    curr_url = tags[rand]['href']  # get the title of that link
 
     out.write('\n-------- Chosen: ' + tags[rand]['title'].encode('ascii', 'ignore') + ' [' + str(rand) + ']--------\n\n')
-    print str(i/float(lucky_digit )) + '%\n'    # percentage
+    # print str(i/float(lucky_digit )) + '%\n'    # percentage
+    print '\r[{0}] {1}%'.format('#'*(i/10), i)
 
+
+print '\n'
 print(curr)
+print(youtube + curr_url)
 
 out.close()
